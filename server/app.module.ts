@@ -1,7 +1,6 @@
-import { Inject, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { createStaticMiddleware } from '@lib/server/static';
 import { CONFIG, ConfigProvider } from '@lib/server/config';
 import { AppController } from './app.controller';
+import { Inject, Module } from '@nestjs/common';
 import { SSRService } from '@lib/server/ssr';
 import { AppService } from './app.service';
 import { Config } from './config';
@@ -12,16 +11,11 @@ import path from 'path';
   controllers: [AppController],
   providers: [ConfigProvider('./config.yml'), SSRService, AppService]
 })
-class AppModule implements NestModule {
+class AppModule {
   constructor(
     @Inject(CONFIG) private readonly config: Config,
     @Inject(SSRService) private readonly ssrService: SSRService
   ) {}
-
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(createStaticMiddleware(this.config.publicRoot)).forRoutes('/*');
-    consumer.apply(createStaticMiddleware(this.config.appDist)).forRoutes('/*');
-  }
 
   async onModuleInit() {
     const indexPath = path.join(this.config.appDist, 'index.html');
