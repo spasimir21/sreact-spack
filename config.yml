@@ -1,0 +1,2 @@
+publicRoot: ./public
+appDist: ./dist/app

@@ -1,0 +1,55 @@
+{
+  "name": "react-ssr-nest",
+  "version": "1.0.0",
+  "description": "",
+  "targets": {
+    "frontend": {
+      "source": "./app/index.html",
+      "distDir": "./dist/app",
+      "engines": {
+        "browsers": "> 0.5%, last 2 versions, not dead"
+      }
+    },
+    "backend": {
+      "source": "./server/index.ts",
+      "distDir": "./dist/server",
+      "engines": {
+        "node": ">= 16"
+      }
+    }
+  },
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build",
+    "serve": "nodemon ./dist/server/index.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.2.8",
+    "@nestjs/core": "^10.2.8",
+    "@nestjs/platform-express": "^10.2.8",
+    "express": "^4.18.2",
+    "node-html-parser": "^6.1.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.19.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.1",
+    "yaml": "^2.3.4"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.2.1",
+    "@nestjs/schematics": "^10.0.3",
+    "@nestjs/testing": "^10.2.8",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "nodemon": "^3.0.1",
+    "parcel": "^2.10.3",
+    "parcel-resolver-ts-base-url": "^1.3.1",
+    "process": "^0.11.10",
+    "typescript": "^5.2.2"
+  },
+  "author": "Spasimir Pavlov",
+  "license": "MIT"
+}
