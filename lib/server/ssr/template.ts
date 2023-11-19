@@ -2,10 +2,10 @@ import { parse as parseHTML, HTMLElement } from 'node-html-parser';
 
 type IndexTemplate = [string, string, string, string];
 
-const fillIndexTemplate = (template: IndexTemplate, title: string, headTags: string, content: string) =>
+const renderIndexTemplate = (template: IndexTemplate, title: string, headTags: string, content: string) =>
   template[0] + headTags + template[1] + title + template[2] + content + template[3];
 
-function toIndexTemplate(indexSource: string): IndexTemplate {
+function parseIndexTemplate(indexSource: string): IndexTemplate {
   const indexHtml = parseHTML(indexSource);
 
   const head = indexHtml.querySelector('head')!;
@@ -22,4 +22,4 @@ function toIndexTemplate(indexSource: string): IndexTemplate {
   return html.split(/\$SSR_(?:HEAD|TITLE|ROOT)\$/) as IndexTemplate;
 }
 
-export { IndexTemplate, fillIndexTemplate, toIndexTemplate };
+export { IndexTemplate, renderIndexTemplate, parseIndexTemplate };

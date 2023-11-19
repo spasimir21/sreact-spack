@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 function Item() {
   const routeParams = useParams();
 
-  const [name, setName] = useSSRState('itemName', routeParams.id);
+  const [name, setName] = useSSRState('itemName', routeParams.name);
 
   useEffect(() => {
     console.log(name);
@@ -21,4 +21,5 @@ function Item() {
   );
 }
 
+export default Item;
 export { Item };

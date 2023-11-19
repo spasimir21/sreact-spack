@@ -1,11 +1,4 @@
-interface PageMetadata {
-  title: string;
-  meta: [string, string][];
-}
+const getMetaTags = (meta: readonly (readonly [string, string])[]) =>
+  meta.map(([name, content]) => `<meta name=${JSON.stringify(name)} content=${JSON.stringify(content)} />`).join('\n');
 
-const getMetaTags = (metadata: PageMetadata) =>
-  metadata.meta
-    .map(([name, content]) => `<meta name=${JSON.stringify(name)} content=${JSON.stringify(content)} />`)
-    .join('\n');
-
-export { PageMetadata, getMetaTags };
+export { getMetaTags };

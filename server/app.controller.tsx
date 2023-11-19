@@ -1,5 +1,6 @@
 import { Controller, Get, Header, Inject, Param } from '@nestjs/common';
-import { SSRService } from '@lib/server/ssr';
+import { TemplateService } from './template.service';
+import { renderSSR } from '@lib/server/ssr';
 import { AppService } from './app.service';
 import { Item } from '@app/pages/Item';
 import React from 'react';
@@ -7,7 +8,7 @@ import React from 'react';
 @Controller()
 class AppController {
   constructor(
-    @Inject(SSRService) private readonly ssrService: SSRService,
+    @Inject(TemplateService) private readonly templateService: TemplateService,
     @Inject(AppService) private readonly appService: AppService
   ) {}
 
@@ -15,13 +16,23 @@ class AppController {
   @Header('Content-Type', 'text/html')
   async item(@Param('name') itemName: string) {
     const data = await this.appService.getItemSSRData(itemName);
-    return this.ssrService.render(<Item />, data.ssrData, data.metadata);
+
+    return renderSSR({
+      template: this.templateService.templates.main,
+      element: <Item />,
+      data,
+      title: `Item - ${itemName}`,
+      meta: [
+        ['author', 'Spasimir Pavlov'],
+        ['item:name', itemName]
+      ]
+    });
   }
 
   @Get('/*')
   @Header('Content-Type', 'text/html')
   fallbackHandler() {
-    return this.ssrService.indexSource;
+    return this.templateService.indexSource;
   }
 }
 

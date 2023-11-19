@@ -1,3 +1,4 @@
+export * from './LayoutContent';
 export * from './useSSRState';
 export * from './isClient';
 export * from './SSRData';

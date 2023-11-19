@@ -1,17 +1,19 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { Home } from './pages/Home';
-import { Item } from './pages/Item';
-import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Layout } from './layouts/Layout';
+import React, { lazy } from 'react';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />
-  },
-  {
-    path: '/item/:id',
-    element: <Item />
-  }
-]);
+const Home = lazy(() => import('./pages/Home'));
+const Item = lazy(() => import('./pages/Item'));
+
+const router = (
+  <BrowserRouter>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path='/' element={<Home />} />
+        <Route path='/item/:name' element={<Item />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);
 
 export { router };
