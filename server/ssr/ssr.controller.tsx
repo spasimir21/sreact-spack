@@ -1,5 +1,5 @@
 import { Controller, Get, Header, Inject } from '@nestjs/common';
-import { TemplateService } from './template.service';
+import { TemplateService } from '../template/template.service';
 import { renderSSR } from '@lib/server/ssr';
 import { SSRService } from './ssr.service';
 import Products from '@app/pages/Products';

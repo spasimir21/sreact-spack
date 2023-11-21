@@ -1,5 +1,5 @@
+import { IProduct } from '../types/IProduct';
 import { Injectable } from '@nestjs/common';
-import { IProduct } from './types/IProduct';
 
 @Injectable()
 class ApiService {

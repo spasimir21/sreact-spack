@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ApiService } from './api.service';
+import { ApiService } from '../api/api.service';
 
 @Injectable()
 class SSRService {

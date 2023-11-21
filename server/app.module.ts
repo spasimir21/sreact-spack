@@ -1,10 +1,10 @@
-import { TemplateService } from './template.service';
+import { TemplateService } from './template/template.service';
+import { ApiController } from './api/api.controller';
+import { SSRController } from './ssr/ssr.controller';
 import { ConfigProvider } from '@lib/server/config';
-import { ApiController } from './api.controller';
-import { SSRController } from './ssr.controller';
 import { Inject, Module } from '@nestjs/common';
-import { ApiService } from './api.service';
-import { SSRService } from './ssr.service';
+import { SSRService } from './ssr/ssr.service';
+import { ApiService } from './api/api.service';
 
 @Module({
   controllers: [SSRController, ApiController],
