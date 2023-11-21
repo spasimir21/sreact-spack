@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Layout } from './layouts/Layout';
+import { CenteredLayout } from './layouts/CenteredLayout';
 import React, { lazy } from 'react';
 
+const Products = lazy(() => import('./pages/Products'));
 const Home = lazy(() => import('./pages/Home'));
-const Item = lazy(() => import('./pages/Item'));
 
 const router = (
   <BrowserRouter>
     <Routes>
-      <Route element={<Layout />}>
+      <Route element={<CenteredLayout />}>
         <Route path='/' element={<Home />} />
-        <Route path='/item/:name' element={<Item />} />
+        <Route path='/products' element={<Products />} />
       </Route>
     </Routes>
   </BrowserRouter>

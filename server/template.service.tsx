@@ -1,13 +1,13 @@
 import { IndexTemplate, parseIndexTemplate, layoutToTemplate } from '@lib/server/ssr';
+import { CenteredLayout } from '@app/layouts/CenteredLayout';
 import { Inject, Injectable } from '@nestjs/common';
-import { Layout } from '@app/layouts/Layout';
 import { CONFIG } from '@lib/server/config';
 import { Config } from './config';
 import * as fs from 'fs/promises';
 import path from 'path';
 
 const LAYOUTS = {
-  main: <Layout />
+  centered: <CenteredLayout />
 } as const;
 
 type Templates<T extends string> = Record<T | 'root', IndexTemplate>;

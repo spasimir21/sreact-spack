@@ -49,10 +49,11 @@
     "nodemon": "^3.0.1",
     "parcel": "^2.10.3",
     "parcel-resolver-ts-base-url": "^1.3.1",
+    "postcss": "^8.4.31",
     "process": "^0.11.10",
+    "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
   },
   "author": "Spasimir Pavlov",
   "license": "MIT"
 }
-

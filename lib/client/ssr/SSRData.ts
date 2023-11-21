@@ -10,7 +10,7 @@ function initializeSSRData() {
   ssrDataScript.remove();
 }
 
-function getSSRDataValue<T>(key: string, defaultValue: T) {
+function getSSRDataValue<T>(key: string, defaultValue: T): T {
   if (!isClient())
     // @ts-ignore
     return process.$SSR_DATA_STACK.peek()[key] as T;

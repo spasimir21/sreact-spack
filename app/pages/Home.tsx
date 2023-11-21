@@ -9,7 +9,8 @@ function Home() {
       <p>Count: {count}</p>
       <button onClick={() => setCount(count + 1)}>+</button>
       <button onClick={() => setCount(count - 1)}>-</button>
-      <SSRLink to='/item/frontend'>Item</SSRLink>
+      <br />
+      <SSRLink to='/products'>Products</SSRLink>
       {/* <img src='/latticeboltzmann.png' /> */}
     </div>
   );
